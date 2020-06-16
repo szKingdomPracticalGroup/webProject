@@ -1,6 +1,11 @@
 <template>
   <div class="login">
     {{msg}}
+    <div>
+      <div style="text-align:center">
+        <h3>{{title}}</h3>
+      </div>
+    </div>
     <el-row :gutter="20">
         <el-col :span="12" :offset="6">
             <div class="grid-content bg-purple">
@@ -11,12 +16,15 @@
                 </el-input>
             </div>
         </el-col>
-        <el-col :span="12" :offset="6">
+        
+    </el-row>
+    <el-row :gutter="20">
+      <el-col :span="12" :offset="6">
             <div class="grid-content bg-purple">
                 <el-input placeholder="请输入密码" v-model="password" show-password></el-input>
             </div>
         </el-col>
-    </el-row>
+    </el-row>    
   </div>
 </template>
 
@@ -26,7 +34,7 @@ export default {
   data () {
     return {
       msg: '欢迎回来！',
-      titil: '财富管理',
+      title: '财富管理',
       input: '',
       password: '',
     }
@@ -38,9 +46,9 @@ export default {
 <style scoped>
     .el-row {
     margin-bottom: 20px;
-    &:last-child {
+    /* &:last-child {
       margin-bottom: 0;
-    }
+    } */
   }
   .el-col {
     border-radius: 4px;
