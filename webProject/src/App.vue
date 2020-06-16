@@ -60,7 +60,7 @@ export default {
   color: red;
 }
 .el-main {
-  
+
   padding-top: 5%;
   box-sizing: border-box;
   padding-right: 10%;

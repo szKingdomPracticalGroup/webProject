@@ -1,8 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+<<<<<<< HEAD
 import firstPage from '@/components/firstPage'
 import project from '@/components/project'
 import myPage from '@/components/myPage'
+=======
+import HelloWorld from '@/components/HelloWorld'
+import test from '../components/test.vue'
+import login from '../components/login.vue'
+import firstPage from '@/components/firstPage'
+import project from '@/components/project'
+import myPage from '@/components/myPage'
+
+>>>>>>> developXM
 Vue.use(Router)
 
 export default new Router({
@@ -11,6 +21,16 @@ export default new Router({
       path:'/',
       name:'firstPage',
       component:firstPage
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: test
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: login
     },
     {
       path:'/firstPage',

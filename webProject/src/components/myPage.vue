@@ -9,15 +9,13 @@ export default {
     name:'myPage',
     data(){
         return{
-
         }
     },
     method:{
-        
+
     }
 }
 </script>
 
 <style>
-
 </style>

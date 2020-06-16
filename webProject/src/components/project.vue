@@ -1,7 +1,7 @@
 <template>
   <div class="project">
     {{msg}}
-    
+
   </div>
 </template>
 
