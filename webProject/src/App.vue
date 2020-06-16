@@ -7,7 +7,7 @@
           <el-menu-item index="1" @click="toFirstPage">首页</el-menu-item>
           <el-menu-item index="2" @click="toProject">产品</el-menu-item>
           <el-menu-item index="3" @click="toFirstPage" disabled>我的</el-menu-item>
-          <el-menu-item index="4" @click="toFirstPage">请先登录</el-menu-item>
+          <el-menu-item index="4" @click="toLogin">请先登录</el-menu-item>
         </el-menu>
       </el-header>
       <el-container>
@@ -32,6 +32,9 @@ export default {
     };
   },
   methods: {
+    toLogin(){
+      this.$router.push("/login");
+    },
     toFirstPage() {
       this.$router.push("/firstPage");
     },
