@@ -13,7 +13,7 @@
         <span>({{products.project_number}})</span>
       </div>
       <div class="params_container background_white">
-        <div class="param_box " v-for="(combined_parameter,index) in products.combined_parameters">
+        <div class="param_box " v-for="(combined_parameter,index) in products.combined_parameters" :key='index' >
           <span>{{combined_parameter.value}}</span>
           <span>{{combined_parameter.title}}</span>
         </div>
@@ -27,7 +27,7 @@
 
         </div>
         <div class="trend_date">
-          <div v-for="(trend,index) in products.trends">
+          <div v-for="(trend,index) in products.trends" :key='index'>
             <span>{{trend.title}}</span>
           </div>
         </div>
@@ -40,7 +40,7 @@
     <div>
       <van-cell title="交易规则" is-link value="费率、交易时间"/>
     </div>
-    <van-button type="info" class="buy" :block="true" size="large">立即买入</van-button>
+    <van-button type="info" class="buy" :block="true" size="large" @click="jumpToPurchase">立即买入</van-button>
   </div>
 
 </template>
@@ -128,6 +128,12 @@
             ]
           }]
         })
+      },
+      jumpToPurchase(){
+        //如果已经登录，跳转到购买页面
+        console.log("我想跳到购买页面")
+        this.$router.push({name:'purchase',params:{id:'参数'}});
+        //如果没有登录，跳转到登录页面
       }
     }
   }
