@@ -14,7 +14,7 @@
     name: 'financial_transactions',
     data(){
       return{
-        active:1
+        active:2
       }
     },
   }

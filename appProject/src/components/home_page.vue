@@ -12,7 +12,7 @@
             总资产（元）
             <p>￥****</p>
           </div>
-          <div class="total-assets has-right-padding">
+          <div class="total-assets has-left-padding">
             累计收益（元）
             <p>￥****</p>
           </div>
@@ -39,7 +39,7 @@
     </div>
     <van-cell title="精选产品" is-link @click="jumpToProduct"/>
     
-    <van-cell title="组合产品B" value="10%" size="large" label="低风险|0元起投" url=""/>
+    <van-cell title="组合产品B" value="10%" size="large" label="低风险|0元起投" @click="jumpToDetail"/>
     <!-- <van-cell title="路由跳转" is-link to="index" /> -->
   </div>
 </template>
@@ -54,11 +54,15 @@
     },
     methods:{
       handleClick(){
-        console.log('财富管理被点了一下！')
+        console.log('财富管理被点了一下！');
+        this.$router.push({name:'me',params:{id:'参数'}});
       },
       jumpToProduct(e){
         console.log(e);
         this.$router.push({name:'financial_transactions',params:{id:'参数'}});
+      },
+      jumpToDetail(e){
+        this.$router.push({name:'products_details',params:{}});
       }
     }
   }
@@ -122,6 +126,6 @@
     border-right: 1px solid gray;
   }
   has-right-padding{
-    margin-left: 10%;
+    padding-left: 10%;
   }
 </style>
