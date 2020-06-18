@@ -38,7 +38,7 @@
       </van-swipe>
     </div>
     <van-cell title="精选产品" is-link @click="jumpToProduct"/>
-    
+
     <van-cell title="组合产品B" value="10%" size="large" label="低风险|0元起投" @click="jumpToDetail"/>
     <!-- <van-cell title="路由跳转" is-link to="index" /> -->
   </div>
@@ -56,6 +56,7 @@
       handleClick(){
         console.log('财富管理被点了一下！');
         this.$router.push({name:'me',params:{id:'参数'}});
+        this.$store.commit('setActiveTabbar',2)
       },
       jumpToProduct(e){
         console.log(e);
@@ -113,19 +114,22 @@
   }
 
   .box-card {
-    width: 96%;
-    margin-left: 2%;
+    width: 100%;
+
   }
 
   .total-assets{
     width: 49%;
     float: left;
     color: gray;
+    box-sizing: border-box;
+    padding: 4% 3%;
+  }
+  .total-assets:last-of-type{
+    padding: 4% 6%;
   }
   .has-right-border{
     border-right: 1px solid gray;
   }
-  has-right-padding{
-    padding-left: 10%;
-  }
+
 </style>

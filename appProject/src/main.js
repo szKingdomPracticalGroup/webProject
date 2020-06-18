@@ -17,7 +17,7 @@ Vue.use(ElementUI);
 Vue.prototype.$echarts = echarts
 Vue.prototype.$axios = axios
 import { Toast } from 'vant';
-import { store } from './store/store'
+import store from './store/store'
 
 router.beforeEach((to, from, next) => {
 
