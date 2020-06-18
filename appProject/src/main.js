@@ -10,6 +10,11 @@ import 'vant/lib/index.css';
 Vue.config.productionTip = false
 Vue.use(Vant)
 Vue.use(ElementUI);
+import 'vant/lib/index.css';
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
+Vue.config.productionTip = false
+Vue.use(Vant)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
