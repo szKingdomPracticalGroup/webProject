@@ -1,18 +1,19 @@
 <template>
-  <div class="firstPage">
-    {{msg}}
+  <div>
+    <p> project Detail:</p>{{id}}
   </div>
 </template>
 
 <script>
 export default {
-  name: 'firstPage',
   data () {
     return {
-      msg: 'firstPage!'
+      id:''	,
     }
-  }
-}
+  },
+  created() {
+	this.id = this.$route.params.id;
+}}
 </script>
 
 <style scoped>

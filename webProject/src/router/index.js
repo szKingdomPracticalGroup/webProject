@@ -6,6 +6,7 @@ import login from '../components/login.vue'
 import firstPage from '@/components/firstPage'
 import project from '@/components/project'
 import myPage from '@/components/myPage'
+import projectDetail from '@/components/projectDetail'
 Vue.use(Router)
 
 export default new Router({
@@ -37,7 +38,12 @@ export default new Router({
       path:'/myPage',
       name:'myPage',
       component:myPage
-    }
+    },
+    {
+      path:'/project/:id',
+      name:'projectDetail',
+      component:projectDetail
+    },
   ],
   hash:'history'
 })
