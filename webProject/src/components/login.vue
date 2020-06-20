@@ -1,30 +1,37 @@
 <template>
   <div class="login">
-    {{msg}}
-    <div>
-      <div style="text-align:center">
-        <h3>{{title}}</h3>
+    <div class="login_box">
+      <span>欢迎登录</span>
+      <div class="input_div">
+        <i class="el-icon-user"></i>
+        <input placeholder="用户名">
+
+        </input>
+      </div>
+      <div class="input_div">
+        <i class="el-icon-s-check"></i>
+        <input placeholder="密码">
+
+        </input>
+      </div>
+      <button>
+        登录
+      </button>
+      <div>
+        <div>
+          <el-checkbox v-model="savePass" size="medium"></el-checkbox>
+          <span>
+          记住密码
+        </span>
+        </div>
+
+        <span>忘记密码</span>
+      </div>
+      <div>
+        <span>创建账号</span>
+        <span>其他帮助</span>
       </div>
     </div>
-    <el-row :gutter="20">
-        <el-col :span="12" :offset="6">
-            <div class="grid-content bg-purple">
-                <el-input
-                    placeholder="请输入手机号"
-                    v-model="input"
-                    clearable>
-                </el-input>
-            </div>
-        </el-col>
-        
-    </el-row>
-    <el-row :gutter="20">
-      <el-col :span="12" :offset="6">
-            <div class="grid-content bg-purple">
-                <el-input placeholder="请输入密码" v-model="password" show-password></el-input>
-            </div>
-        </el-col>
-    </el-row>    
   </div>
 </template>
 
@@ -37,6 +44,7 @@ export default {
       title: '财富管理',
       input: '',
       password: '',
+      savePass:true,
     }
   }
 }
@@ -44,30 +52,99 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    .el-row {
-    margin-bottom: 20px;
-    /* &:last-child {
-      margin-bottom: 0;
-    } */
+  .login{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../assets/login_background.png") no-repeat;
+    background-size: cover;
+    background-size: 100% 100%;
   }
-  .el-col {
-    border-radius: 4px;
+  .login_box{
+    width: 1200px;
+    height: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    box-sizing: border-box;
+    padding:100px 0px;
   }
-  .bg-purple-dark {
-    background: #99a9bf;
+  .login_box>span:first-child{
+    color:#ffffff;
+    font-size: 70px;
   }
-  .bg-purple {
-    background: #d3dce6;
+  .input_div{
+    background: #959FBA;
+    opacity: 0.5;
+    width: 800px;
+    height:120px;
+    font-size: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 40px;
+    border-radius: 60px;
   }
-  .bg-purple-light {
-    background: #e5e9f2;
+  input{
+    border: 0;
+    height: 120px;
+    font-size: 30px;
+    background: transparent;
+    padding-left: 20px;
   }
-  .grid-content {
-    border-radius: 4px;
-    min-height: 36px;
+  input::placeholder{
+    color:#C3D1D4;
   }
-  .row-bg {
-    padding: 10px 0;
-    background-color: #f9fafc;
+  button{
+    width: 800px;
+    height:120px;
+    border-radius: 60px;
+    background: #3962D6;
+    color:#fff;
+    font-size: 40px;
+    border: 0;
+  }
+  div:nth-of-type(3){
+    width: 1000px;
+    height: 60px;
+    display: flex;
+    box-sizing: border-box;
+    padding-right: 100px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  div:nth-of-type(3)>>>.el-checkbox__inner{
+    width: 40px;
+    height: 40px;
+   font-size: 40px;
+  }
+  div:nth-of-type(3)>>>.el-checkbox__inner::after{
+    width: 20px;
+    height: 20px;
+
+  }
+  div:nth-of-type(3)>div{
+
+    display: flex;
+    width: 400px;
+    justify-content: flex-start;
+  }
+  div:nth-of-type(4){
+    padding: 0;
+    width: 900px;
+    box-sizing: border-box;
+    padding-right: 50px;
+    height: 60px;
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  span{
+    color:#C2CEE6;
+    font-size: 35px;
   }
 </style>

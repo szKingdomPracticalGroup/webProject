@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
 import test from '../components/test.vue'
 import login from '../components/login.vue'
 import firstPage from '@/components/firstPage'

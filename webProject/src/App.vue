@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <el-container style="height:885px">
+    <el-container style="height:100%">
       <el-header><Header/></el-header>
       <el-container>
         <el-aside width="200px"><SideBar/></el-aside>
@@ -32,6 +32,7 @@ export default {
   margin: 0;
   padding: 0;
 }
+
 body {
   height: 100%;
 }
@@ -51,6 +52,7 @@ body {
 }
 .el-main{
   height: 100%;
+  background: black;
   padding: 10px;
 }
 </style>
