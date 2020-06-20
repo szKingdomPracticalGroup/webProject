@@ -31,5 +31,7 @@ export default {
 </script>
 
 <style>
-
+*{
+  font-family: 'Open Sans Light';
+}
 </style>
