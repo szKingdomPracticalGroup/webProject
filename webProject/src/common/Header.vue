@@ -2,12 +2,12 @@
 	<div class="head">
 		<span >XXXXXX</span>
 
-		<el-menu :default-active="activeIndex" 
-			class="el-menu-demo" 
+		<el-menu
+			class="el-menu-demo"
 			mode="horizontal"
-			@select="handleSelect" 
+      :router="true"
 			active-text-color='#58A061'
-			router='true'>
+			>
 		 	<el-menu-item index="/firstPage">首页</el-menu-item>
 		 	<el-menu-item index="/project">产品</el-menu-item>
 		 	<el-menu-item index="/myPage">我的</el-menu-item>

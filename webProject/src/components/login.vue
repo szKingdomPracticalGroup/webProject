@@ -9,12 +9,12 @@
         </input>
       </div>
       <div class="input_div">
-        <i class="el-icon-s-check"></i>
+        <img src="../assets/key.png" style="width: 50px"/>
         <input placeholder="密码">
 
         </input>
       </div>
-      <button>
+      <button @click="onSubmit">
         登录
       </button>
       <div>
@@ -46,6 +46,13 @@ export default {
       password: '',
       savePass:true,
     }
+  },
+  methods:{
+    onSubmit(values) {
+      this.$store.commit('userStatus',true)
+      console.log(this.$store.state.isLogin)
+      this.$router.push({name:'first_page'})
+    },
   }
 }
 </script>
@@ -92,6 +99,7 @@ export default {
   input{
     border: 0;
     height: 120px;
+    width: 100%;
     font-size: 30px;
     background: transparent;
     padding-left: 20px;
@@ -107,6 +115,7 @@ export default {
     color:#fff;
     font-size: 40px;
     border: 0;
+    cursor: pointer;
   }
   div:nth-of-type(3){
     width: 1000px;
@@ -146,5 +155,12 @@ export default {
   span{
     color:#C2CEE6;
     font-size: 35px;
+    cursor: pointer;
+  }
+  span:hover{
+    color:#a1c4fd
+  }
+  input:hover{
+    border:0
   }
 </style>

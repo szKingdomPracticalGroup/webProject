@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <el-container style="height:100%">
+    <el-container style="height:100%" >
       <el-header><Header/></el-header>
       <el-container>
         <el-aside width="200px"><SideBar/></el-aside>
@@ -17,12 +17,19 @@
 import Header from "./common/Header.vue";
 import Footer from "./common/Footer.vue";
 import SideBar from "./common/SideBar.vue";
+import login from './components/login'
 export default {
   name: "app",
   components: {
     Header,
     Footer,
-    SideBar
+    SideBar,
+    login
+  },
+  data(){
+    return{
+      isLogin:this.$store.state.isLogin,
+    }
   }
 };
 </script>
@@ -52,7 +59,7 @@ body {
 }
 .el-main{
   height: 100%;
-  background: black;
+
   padding: 10px;
 }
 </style>

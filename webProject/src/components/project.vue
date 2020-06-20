@@ -1,14 +1,5 @@
 <template>
   <div class="project">
-    <!-- <el-row>
-      <el-col :span="8" v-for="product in products" :key="product.id">
-        <el-card :body-style="{ padding: '0px' }" shadow="hover">
-          <div style="padding: 14px;">
-            <span>产品名：{{product.productName}}</span>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>-->
 
     <el-row :gutter="20">
       <el-col :span="6">
@@ -59,9 +50,9 @@ export default {
   name: "project",
   data() {
     return {
-      product: 
+      product:
         {"id":1,"name":"Acbads"}
-      
+
     };
   }
 };
