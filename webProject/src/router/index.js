@@ -11,6 +11,7 @@ import fundLibrary from '@/components/fundLibrary'
 import sharesLibrary from '@/components/sharesLibrary'
 import personalInfo from '@/components/personalInfo'
 import briefInfo from '@/components/briefInfo'
+import platform_introduction from "../components/platform_introduction";
 import product_initialzation_fund from "../components/product_initialzation_fund";
 Vue.use(Router)
 
@@ -74,7 +75,11 @@ export default new Router({
       path:'/product_initialzation_fund',
       name:'product_initialzation_fund',
       component:product_initialzation_fund
-    },
+    },{
+    path:'/platform_introduction',
+      name:'platform_introduction',
+      component:platform_introduction
+    }
   ],
   mode:'history'
 })
