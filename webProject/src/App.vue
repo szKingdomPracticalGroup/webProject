@@ -35,31 +35,31 @@ export default {
 </script>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-}
+/** {*/
+/*  margin: 0;*/
+/*  padding: 0;*/
+/*}*/
 
-body {
-  height: 100%;
-}
-#app {
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  background-color: rgb(244, 244, 244);
-}
+/*body {*/
+/*  height: 100%;*/
+/*}*/
+/*#app {*/
+/*  height: 100%;*/
+/*  width: 100%;*/
+/*  position: fixed;*/
+/*  font-family: "Avenir", Helvetica, Arial, sans-serif;*/
+/*  background-color: rgb(244, 244, 244);*/
+/*}*/
 
-.el-header{
-  padding: 0px 0px;
-}
-.el-aside{
-  margin-top: 10px;
-}
-.el-main{
-  height: 100%;
+/*.el-header{*/
+/*  padding: 0px 0px;*/
+/*}*/
+/*.el-aside{*/
+/*  margin-top: 10px;*/
+/*}*/
+/*.el-main{*/
+/*  height: 100%;*/
 
-  padding: 10px;
-}
+/*  padding: 10px;*/
+/*}*/
 </style>

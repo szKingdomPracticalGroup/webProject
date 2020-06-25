@@ -11,6 +11,7 @@ import fundLibrary from '@/components/fundLibrary'
 import sharesLibrary from '@/components/sharesLibrary'
 import personalInfo from '@/components/personalInfo'
 import briefInfo from '@/components/briefInfo'
+import product_initialzation_fund from "../components/product_initialzation_fund";
 Vue.use(Router)
 
 export default new Router({
@@ -69,6 +70,10 @@ export default new Router({
       path:'/briefInfo',
       name:'briefInfo',
       component:briefInfo
+    },{
+      path:'/product_initialzation_fund',
+      name:'product_initialzation_fund',
+      component:product_initialzation_fund
     },
   ],
   mode:'history'

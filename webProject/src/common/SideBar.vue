@@ -20,13 +20,14 @@
         <span slot="title">投顾人中心</span>
       </el-menu-item>
 
-      <el-submenu>
+      <el-submenu index="">
         <template slot="title">
           <i class="el-icon-location"></i>
           <span>产品</span>
         </template>
         <el-menu-item-group>
           <el-menu-item index="/project">产品列表</el-menu-item>
+          <el-menu-item index="/project">产品管理</el-menu-item>
         </el-menu-item-group>
 
         <el-submenu index="1-4">
@@ -59,7 +60,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   height: 825px;
   width: 200px;
