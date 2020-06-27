@@ -30,11 +30,17 @@ export default {
     return{
       isLogin:this.$store.state.isLogin,
     }
+  },
+  methods:{
+    getStatusCookie(){
+
+    }
   }
 };
 </script>
 
 <style>
+
 * {
   margin: 0;
   padding: 0;

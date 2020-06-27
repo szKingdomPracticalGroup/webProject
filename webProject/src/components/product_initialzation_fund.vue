@@ -1,6 +1,18 @@
 <template>
     <div class="product_initialzation_fund">
-
+        <el-dialog
+                :modal="false"
+                title="基金产品确定"
+                :visible.sync="dialogVisible"
+                width="500px"
+                :before-close="handleClose">
+            <span>请确定您所选择的基金产品</span>
+            <p>确定后将按您所选产品进行组合，并进入股票产品选择界面</p>
+            <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisible = false">取 消</el-button>
+    <el-button type="primary" @click="confirm_fund_initial">确 定</el-button>
+  </span>
+        </el-dialog>
         <header>基金产品选择</header>
         <div class="card">
             <el-breadcrumb separator="/">
@@ -21,7 +33,7 @@
             </div>
             <div class="table_pagination">
                     <span>基金备选库</span>
-                    <el-button class="el-button--danger">确认选择</el-button>
+                    <el-button class="el-button--danger" @click="dialogVisible = true">确认选择</el-button>
 
                     <el-pagination
                             @size-change="handleSizeChange"
@@ -93,18 +105,21 @@
                     </template>
                 </el-table-column>
             </el-table>
+
         </div>
 
     </div>
 </template>
 
 <script>
+    import  axios from 'axios'
     export default {
         name: "product_initialzation_fund",
         data() {
             return {
                 msg: 'HelloWorld!',
                 selected_filters:[0,2,1],
+                dialogVisible:false,
                 currentPage1:1,
                 tableData: [{
                     date: '2016-05-03',
@@ -168,6 +183,14 @@
             },
             handleCurrentChange(){
 
+            },
+            confirm_fund_initial(){
+                console.log('...')
+                // axios.post().then(data=>{
+                //
+                // }).catch(err=>{
+                //
+                // })
             }
         }
     }

@@ -96,9 +96,8 @@ export default {
     //
     // },
     onSubmit(){
-      this.$store.commit('userStatus',true)
-      console.log(this.$store.state.isLogin)
       this.$router.push({name:'first_page'})
+      sessionStorage.setItem('userName',this.userName);
     },
     toRegister(){
       console.log('???')
@@ -121,6 +120,7 @@ export default {
     background-size: 100% 100%;
   }
   .login_box{
+    transform: scale(0.5);
     width: 1200px;
     height: 1200px;
     display: flex;
@@ -169,7 +169,7 @@ export default {
     cursor: pointer;
   }
   div:nth-of-type(3){
-    width: 1000px;
+    width: 900px;
     height: 60px;
     display: flex;
     box-sizing: border-box;
@@ -195,7 +195,7 @@ export default {
   }
   div:nth-of-type(4){
     padding: 0;
-    width: 900px;
+    width: 800px;
     box-sizing: border-box;
     padding-right: 50px;
     height: 60px;

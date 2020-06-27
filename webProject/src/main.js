@@ -17,24 +17,35 @@ Vue.config.productionTip = false
 Vue.use(ElementUI);
 Vue.use(Vuex)
 /* eslint-disable no-new */
-// router.beforeEach((to, from, next) => {
-//   console.log(store.getters.isLogin)
-//   if(to.name==='register'){
-//     next()
-//   }else
-//   if(to.name!=='login'){//如果不是登录界面
-//     if(store.getters.isLogin===false){
-//       next({
-//         path:'/login'
-//       })
-//     }else{
-//       next()
-//     }
-//   }else{
-//     next()
-//   }
-//
-// });
+
+Vue.prototype.getStatus=function(){
+  let userName=sessionStorage.getItem('userName');
+  console.log(userName);
+  if(userName!==undefined){
+    return true
+  }
+  return false;
+}
+router.beforeEach((to, from, next) => {
+  let userName=sessionStorage.getItem('userName');
+  console.log(userName)
+  if(to.name==='register'||to.name==='login'||to.name==='first_page'){
+    next()
+    return
+  }else
+  {//如果不是登录,注册,首页界面
+    if(userName!==null &&userName!==undefined){
+      next()
+      return
+    }else{
+      next({
+        name:'login'
+      })
+      return
+    }
+  }
+
+});
 new Vue({
   el: '#app',
   router,

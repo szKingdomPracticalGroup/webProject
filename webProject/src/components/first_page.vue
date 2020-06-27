@@ -9,8 +9,8 @@
       <h4>一个高效实用的代客理财开发平台</h4>
       <div class="btn">
         <el-button plain size="mini" @click="openBrief">平台简介</el-button>
-        <el-button plain size="mini" @click="openProduct">产品管理</el-button>
-        <el-button plain size="mini" @click="openTrade">交易盒子</el-button>
+        <el-button plain size="mini" >产品管理</el-button>
+        <el-button plain size="mini">交易盒子</el-button>
       </div>
     </div>
 

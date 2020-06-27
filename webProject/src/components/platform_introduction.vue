@@ -1,7 +1,7 @@
 <template>
   <div class="platform_introduction">
     <header>
-      <span class="breadcrumb">系统首页/平台简介</span>
+      <span class="breadcrumb">平台简介</span>
       <div>
         <p>
           Kinddom代客理财系统
@@ -80,6 +80,9 @@
   .breadcrumb{
     position:absolute;
     left: 0;
+    color:#C2C2C2;
+    font-weight: 700;
+    margin:20px ;
   }
   header>src{
     height: 30%;
