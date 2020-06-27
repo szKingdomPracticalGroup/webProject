@@ -1,7 +1,7 @@
 <template>
 	<div class="head">
 		<div class="logo">
-			<p>投股人管理端</p>
+			<p>投顾人管理端</p>
 		</div>
 		<!-- <el-menu default-active="0"
 			class="el-menu-demo"

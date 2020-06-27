@@ -18,7 +18,7 @@
               </el-col>
             </el-row>
             <p>产品组合</p>
-            <p>投股id</p>
+            <p>投顾id</p>
           </div>
           </router-link>
         </el-card>
@@ -37,7 +37,7 @@
               </el-col>
             </el-row>
             <p>产品组合</p>
-            <p>投股id</p>
+            <p>投顾id</p>
           </div>
         </el-card>
       </el-col>
