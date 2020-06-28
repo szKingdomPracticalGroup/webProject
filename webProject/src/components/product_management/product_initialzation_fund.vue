@@ -186,6 +186,11 @@
             },
             confirm_fund_initial(){
                 console.log('...')
+                this.dialogVisible=false;
+                this.$message({
+                    type:'success',
+                    message:'购买成功'
+                })
                 // axios.post().then(data=>{
                 //
                 // }).catch(err=>{

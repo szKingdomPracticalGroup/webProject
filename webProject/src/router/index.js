@@ -1,19 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import test from '../components/test.vue'
-import login from '../components/login.vue'
+import login from '../components/login/login.vue'
 import first_page from '@/components/first_page'
-import project from '@/components/project'
+import project from '@/components/product_management/project'
 import myPage from '@/components/myPage'
-import register from "@/components/register";
+import register from "@/components/login/register";
 import projectDetail from '@/components/projectDetail'
 import fundLibrary from '@/components/fundLibrary'
-import sharesLibrary from '@/components/sharesLibrary'
 import personalInfo from '@/components/personalInfo'
 import briefInfo from '@/components/briefInfo'
 import platform_introduction from "../components/platform_introduction";
 import buy from "../components/trading_box/buy";
-import product_initialzation_fund from "../components/product_initialzation_fund";
+import product_initialzation_fund from "../components/product_management/product_initialzation_fund";
 
 Vue.use(Router)
 
@@ -23,11 +21,6 @@ export default new Router({
             path: '/',
             name: 'first_page',
             component: first_page
-        },
-        {
-            path: '/test',
-            name: 'test',
-            component: test
         },
         {
             path: '/login',
@@ -50,11 +43,8 @@ export default new Router({
             path: '/register',
             name: 'register',
             component: register
-        }, {
-            path: '/sharesLibrary',
-            name: 'sharesLibrary',
-            component: sharesLibrary
-        }, {
+        },
+        {
             path: '/fundLibrary',
             name: 'fundLibrary',
             component: fundLibrary

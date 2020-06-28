@@ -28,7 +28,6 @@
                     <span>产品管理</span>
                 </template>
                 <el-menu-item-group>
-                    <el-menu-item index="/project">产品列表</el-menu-item>
                     <el-menu-item index="/project">产品管理</el-menu-item>
                 </el-menu-item-group>
 

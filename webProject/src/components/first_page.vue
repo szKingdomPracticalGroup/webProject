@@ -8,8 +8,9 @@
       <h2>KINGDOM</h2>
       <h4>一个高效实用的代客理财开发平台</h4>
       <div class="btn">
-        <el-button plain size="mini" @click="openBrief">平台简介</el-button>
-        <el-button plain size="mini" >产品管理</el-button>
+
+        <el-button plain size="mini" @click="toIntroduce">平台简介</el-button>
+        <el-button plain size="mini" @click="toIntroduce">产品管理</el-button>
         <el-button plain size="mini">交易盒子</el-button>
       </div>
     </div>
@@ -25,9 +26,10 @@ export default {
     return {};
   },
    methods: {
-    openBrief() {
-      this.$router.push("briefInfo");
-    }
+     toIntroduce() {
+      this.$router.push({name:'platform_introduction'});
+    },
+
   }
 };
 </script>
@@ -47,10 +49,12 @@ export default {
   h2{
     margin-top: 70px;
     font-size: 50px;
+    font-weight: 500;
   }
   h4{
         margin-bottom: 40px;
     font-size: 15px;
+    font-weight: 500;
   }
   p{
     margin: 40px 30px 20px;
@@ -59,5 +63,10 @@ export default {
   h6{
     margin-left: 40px;
     font-size: 15px;
+  }
+  .btn>button{
+    background: transparent;
+    color:#fff;
+    box-shadow: 0 0 3px 3px #F4EA66;
   }
 </style>

@@ -17,7 +17,7 @@
 import Header from "./common/Header.vue";
 import Footer from "./common/Footer.vue";
 import SideBar from "./common/SideBar.vue";
-import login from './components/login'
+import login from './components/login/login'
 export default {
   name: "app",
   components: {
