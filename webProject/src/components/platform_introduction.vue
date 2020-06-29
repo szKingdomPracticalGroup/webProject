@@ -50,7 +50,7 @@
           title:'投顾签约',
           content:'投资者在选择产品进行委托前需要进行投顾签约，合理的承担一部分投资风险'
         },{
-          icon:'../assets/platform_introduce/icon6.png',
+          icon:'../../static/platform_introduce/icon6.png',
           title:'交易明细',
           content:'在交易顺利进行后，系统会生成相应的交易明细和交易记录用作保持，并同时呈现给投资人'
         }]

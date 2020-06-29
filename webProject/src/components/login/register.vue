@@ -26,6 +26,7 @@
 
         </input>
       </div>
+
       <button @click="onSubmit">
         注册
       </button>

@@ -6,7 +6,6 @@ const store = new Vuex.Store({
   state: {
     isLogin: false,
     activeTabbar:0,
-    httpAddress:'http://123.57.46.173/:9003'
   },
   // 获取属性的状态
   getters: {

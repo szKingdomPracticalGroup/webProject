@@ -49,57 +49,34 @@ export default {
     }
   },
   methods:{
-    // onSubmit() {
-    //   let reg=/^\d{8,}$/
-    //   let regResult=this.userName.match(reg);
-    //   console.log(regResult)
-    //   if (regResult){
-    //     let phoneNumber=this.userName;
-    //     let params={
-    //       phoneNumber,
-    //       password: this.password
-    //     }
-    //     this.$axios.post(`${this.$store.state.httpAddress}/user/loginUser`,params).then(data=>{
-    //       if(data.data){
-    //         console.log(data)
-    //         this.$store.commit('userStatus',true)
-    //         console.log(this.$store.state.isLogin)
-    //         this.$router.push({name:'first_page'})
-    //       }
-    //     }).catch(err=>{
-    //       this.$message({
-    //         message:'似乎哪里出了问题',
-    //         type: 'warning'
-    //       })
-    //     })
-    //   }
-    //   else{
-    //     let email=this.userName;
-    //     let params={
-    //       email,
-    //       password: this.password
-    //     }
-    //     this.$axios.post(`http://${this.$store.state.httpAddress}/user/loginUser`,params).then(data=>{
-    //       if(data.data){
-    //         console.log(data)
-    //         this.$store.commit('userStatus',true)
-    //         console.log(this.$store.state.isLogin)
-    //         this.$router.push({name:'first_page'})
-    //       }
-    //     }).catch(err=>{
-    //       this.$message({
-    //         message:'似乎哪里出了问题',
-    //         type: 'warning'
-    //       })
-    //     })
-    //   }
-    //
-    // },
-    onSubmit(){
-      this.$router.push({name:'first_page'})
+    onSubmit() {
+        let email=this.userName;
+        let params={
+          email,
+          password: this.password,
 
-      sessionStorage.setItem('userName',this.userName);
+        }
+        this.$axios.post(`/consultant/loginConsultant`,params).then(data=>{
+          if(data.data){
+            console.log(data)
+            this.$store.commit('userStatus',true)
+            console.log(this.$store.state.isLogin)
+            this.$router.push({name:'first_page'})
+          }
+        }).catch(err=>{
+          this.$message({
+            message:'似乎哪里出了问题',
+            type: 'warning'
+          })
+        })
+
+
     },
+    // onSubmit(){
+    //   this.$router.push({name:'first_page'})
+    //
+    //   sessionStorage.setItem('userName',this.userName);
+    // },
     toRegister(){
       console.log('???')
       this.$router.push({name:'register'})
