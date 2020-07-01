@@ -26,10 +26,16 @@ Vue.prototype.getStatus=function(){
   }
   return false;
 }
+Vue.prototype.showMessage=function(message,type='success'){
+  this.$message({
+    type:type,
+    message,
+  })
+}
 router.beforeEach((to, from, next) => {
   let userName=sessionStorage.getItem('userName');
   console.log(userName)
-  if(to.name==='register'||to.name==='login'||to.name==='first_page'){
+  if(to.name==='register'||to.name==='login'||to.name==='first_page'||to.name==='platform_introduction'){
     next()
     return
   }else

@@ -1,7 +1,7 @@
 <template>
   <div class="myPage">
     <h1 class="t">投顾人中心</h1>
-    <img src="../assets/myPagePic.png" />
+    <img src="../assets/myPagePic.jpg" />
 
     <h2>Kingdom代客理财系统</h2>
     <div class="btn">
@@ -11,7 +11,7 @@
     <div class="btn">
       <span>点击修改密码</span>
       <el-button plain size="mini" @click="dialogFormVisible = true">Password</el-button>
-
+      
       <el-dialog title="修改密码" :visible.sync="dialogFormVisible" width='35%'>
         <el-form :model="form">
           <el-form-item label="原始密码" :label-width="formLabelWidth">
@@ -49,7 +49,7 @@ export default {
       this.$router.push("personalInfo");
     }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -78,5 +78,4 @@ img {
 .el-button {
   font-weight: 800;
 }
-
 </style>

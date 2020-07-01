@@ -2,17 +2,19 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import login from '../components/login/login.vue'
 import first_page from '@/components/first_page'
-import project from '@/components/product_management/project'
 import myPage from '@/components/myPage'
 import register from "@/components/login/register";
-import projectDetail from '@/components/projectDetail'
-import fundLibrary from '@/components/fundLibrary'
 import personalInfo from '@/components/personalInfo'
 import briefInfo from '@/components/briefInfo'
 import platform_introduction from "../components/platform_introduction";
 import buy from "../components/trading_box/buy";
-import product_initialzation_fund from "../components/product_management/product_initialzation_fund";
-
+import fund_library from '@/components/product_management/fund_library'
+import combinationdetails_one from "../components/product_management/combinationdetails_one";
+import combinationdetails_two from "../components/product_management/combinationdetails_two";
+import rebalance from "../components/trading_box/rebalance";
+import product_management from "../components/product_management/product_management";
+import generate_complete from "../components/product_management/generate_complete";
+import shares_libarary from "../components/product_management/shares_libarary";
 Vue.use(Router)
 
 export default new Router({
@@ -32,9 +34,9 @@ export default new Router({
             name: 'first_page',
             component: first_page
         }, {
-            path: '/project',
-            name: 'project',
-            component: project
+            path: '/product_management',
+            name: 'product_management',
+            component: product_management
         }, {
             path: '/myPage',
             name: 'myPage',
@@ -45,28 +47,18 @@ export default new Router({
             component: register
         },
         {
-            path: '/fundLibrary',
-            name: 'fundLibrary',
-            component: fundLibrary
-        },
-        {
             path: '/personalInfo',
             name: 'personalInfo',
             component: personalInfo
-        },
-        {
-            path: '/project/:id',
-            name: 'projectDetail',
-            component: projectDetail
         },
         {
             path: '/briefInfo',
             name: 'briefInfo',
             component: briefInfo
         }, {
-            path: '/product_initialzation_fund',
-            name: 'product_initialzation_fund',
-            component: product_initialzation_fund
+            path: '/fund_library',
+            name: 'fund_library',
+            component: fund_library
         }, {
             path: '/platform_introduction',
             name: 'platform_introduction',
@@ -75,7 +67,35 @@ export default new Router({
             path: '/buy',
             name: 'buy',
             component: buy
+        },{
+            path: '/combinationdetails_one',
+            name: 'combinationdetails_one',
+            component: combinationdetails_one
+        },{
+            path: '/combinationdetails_two',
+            name: 'combinationdetails_two',
+            component: combinationdetails_two
+        },{
+            path: '/rebalance',
+            name: 'rebalance',
+            component: rebalance
+        },{
+            path: '/generate_complete',
+            name: 'generate_complete',
+            component: generate_complete
+        },{
+            path: '/shares_libarary',
+            name: 'shares_libarary',
+            component: shares_libarary
+        },{
+            path: '/combinationdetails_two',
+            name: 'combinationdetails_two',
+            component: combinationdetails_two
+        },{
+            path: '/combinationdetails_two',
+            name: 'combinationdetails_two',
+            component: combinationdetails_two
         }
     ],
-    mode: 'history'
+    mode: 'hash'
 })

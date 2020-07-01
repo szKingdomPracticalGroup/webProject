@@ -59,8 +59,7 @@ export default {
         this.$axios.post(`/consultant/loginConsultant`,params).then(data=>{
           if(data.data){
             console.log(data)
-            this.$store.commit('userStatus',true)
-            console.log(this.$store.state.isLogin)
+            sessionStorage.setItem('userName',this.userName);
             this.$router.push({name:'first_page'})
           }
         }).catch(err=>{

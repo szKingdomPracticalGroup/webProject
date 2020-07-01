@@ -16,6 +16,9 @@ module.exports = {
       },
       '/consultant':{
         target:'http://123.57.46.173:9002'
+      },
+      '/product':{
+        target:'http://123.57.46.173:9003'
       }
     },
 

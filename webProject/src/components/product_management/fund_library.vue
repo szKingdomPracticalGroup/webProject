@@ -5,7 +5,7 @@
                 title="基金产品确定"
                 :visible.sync="dialogVisible"
                 width="500px"
-                :before-close="handleClose">
+                >
             <span>请确定您所选择的基金产品</span>
             <p>确定后将按您所选产品进行组合，并进入股票产品选择界面</p>
             <span slot="footer" class="dialog-footer">
@@ -50,7 +50,7 @@
                     height="1000px"
                     size="medium"
                     ref="multipleTable"
-                    :data="tableData"
+                    :data="fundTableData"
                     tooltip-effect="dark"
 
                     @selection-change="handleSelectionChange">
@@ -59,17 +59,17 @@
                         width="200">
                 </el-table-column>
                 <el-table-column
+                        prop="name"
                         label="基金名称"
                         width="200">
-                    <template slot-scope="scope">{{ scope.row.date }}</template>
                 </el-table-column>
                 <el-table-column
-                        prop="name"
+                        prop="code"
                         label="基金代码"
                         width="200">
                 </el-table-column>
                 <el-table-column
-                        prop="address"
+                        prop="riskType"
                         label="风险等级"
                         show-overflow-tooltip>
                 </el-table-column>
@@ -79,11 +79,11 @@
                         show-overflow-tooltip>
                 </el-table-column>
                 <el-table-column
-                        prop="address"
+                        prop="upAndDown"
                         label="日涨跌幅"
                         show-overflow-tooltip>
                     <template slot-scope="scope">
-                        <span class="span_red ">{{scope.row.address}}</span>
+                        <span class="span_red ">{{scope.row.upAndDown}}</span>
                     </template>
                 </el-table-column>
                 <el-table-column
@@ -121,35 +121,7 @@
                 selected_filters:[0,2,1],
                 dialogVisible:false,
                 currentPage1:1,
-                tableData: [{
-                    date: '2016-05-03',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-08',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-06',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-07',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }],
+                fundTableData:[],
                 filter_items:[{
                     title:'基金类型',
                     itemList:['股票型','债券型','货币型']
@@ -168,7 +140,33 @@
                 multipleSelection: []
             }
         },
+        created() {
+            axios.get('/product/selectFundAlternateAll').then(data=>{
+                console.log(data)
+                if(data.status===200){
+                    this.fundTableData=data.data.data.data;
+                }else{
+                    this.showMessage('获取失败','error')
+                }
+            }).catch(err=>{
+                console.log('err')
+                this.showMessage(`错误代码为${err}`,'error')
+            })
+        },
         methods:{
+            getAllFund(pageNum,pageSize){
+                axios.get(`/product/selectFundAlternateAll?pageNum=${pageNum}&pageSize=${pageSize}`).then(data=>{
+                    if(data.code===200){
+                        this.fundTableData=data.data.data;
+                    }else{
+                        this.showMessage('获取失败','error')
+                    }
+
+                }).catch(err=>{
+                    console.log('err')
+                    console.log(err)
+                })
+            },
             changeActive(index,indexx){
                 console.log(index,indexx)
                 this.selected_filters[index]=indexx
