@@ -52,7 +52,6 @@ body {
 #app {
   height: 100%;
   width: 100%;
-  position: fixed;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   background-color: rgb(244, 244, 244);
 }
