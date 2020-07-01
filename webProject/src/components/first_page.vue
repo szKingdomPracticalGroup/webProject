@@ -10,7 +10,7 @@
       <div class="btn">
         <el-button plain size="mini" @click="openBrief">平台简介</el-button>
         <el-button plain size="mini" @click="openProduct">产品管理</el-button>
-        <el-button plain size="mini" @click="openTrade">交易盒子</el-button>
+        <el-button plain size="mini" @click="openTrade">交易概览</el-button>
       </div>
     </div>
 <div class="bottom">
@@ -30,8 +30,14 @@ export default {
   },
    methods: {
     openBrief() {
-      this.$router.push("briefInfo");
-    }
+      this.$router.push("platform_introduction");
+    },
+     openTrade(){
+       this.$router.push("product_management");
+     },
+     openProduct(){
+       this.$router.push("product_management");
+     }
   }
 };
 </script>
@@ -77,5 +83,10 @@ export default {
     border-radius: 50%;
     height: 150px;
     margin-right: 80px;
+  }
+  .btn>>>.el-button{
+    box-shadow:0px 0px 3px 4px #FFF566 ;
+    background:transparent;
+    color:rgba(255,255,255,0.5)
   }
 </style>
