@@ -45,7 +45,7 @@
                     <el-menu-item index="5-3">卖出</el-menu-item>
                     <el-menu-item index="/rebalance">再平衡</el-menu-item>
                     <el-menu-item index="5-5">风险调仓</el-menu-item>
-                    <el-menu-item index="5-6">交易明细</el-menu-item>
+                    <el-menu-item index="/transaction_details">交易明细</el-menu-item>
                 </el-menu-item-group>
             </el-submenu>
 

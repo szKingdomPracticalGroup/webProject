@@ -56,11 +56,15 @@ export default {
           password: this.password,
 
         }
-        this.$axios.post(`/consultant/loginConsultant`,params).then(data=>{
-          if(data.data){
-            console.log(data)
+        this.$axios.post(`/consultant/loginConsultant?email=${params.email}&password=${params.password}`,params).then(data=>{
+          console.log(data)
+          if(data.data&&data.data.code===200){
+           this.showMessage('登录成功','success')
             sessionStorage.setItem('userName',this.userName);
             this.$router.push({name:'first_page'})
+
+          }else{
+            this.showMessage('登录失败','warning')
           }
         }).catch(err=>{
           this.$message({

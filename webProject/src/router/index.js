@@ -15,6 +15,7 @@ import rebalance from "../components/trading_box/rebalance";
 import product_management from "../components/product_management/product_management";
 import generate_complete from "../components/product_management/generate_complete";
 import shares_libarary from "../components/product_management/shares_libarary";
+import transaction_details from "../components/transaction_details";
 Vue.use(Router)
 
 export default new Router({
@@ -95,6 +96,10 @@ export default new Router({
             path: '/combinationdetails_two',
             name: 'combinationdetails_two',
             component: combinationdetails_two
+        },{
+            path: '/transaction_details',
+            name: 'transaction_details',
+            component: transaction_details
         }
     ],
     mode: 'hash'

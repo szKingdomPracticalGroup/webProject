@@ -28,7 +28,12 @@ export default {
   data() {
     return {};
   },
-   methods: {
+  created() {
+    this.$axios.get(`/consultant/loadConsultant`).then(data2=>{
+      console.log(data2)
+    })
+  },
+  methods: {
     openBrief() {
       this.$router.push("platform_introduction");
     },

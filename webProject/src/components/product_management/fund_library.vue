@@ -38,10 +38,10 @@
                     <el-pagination
                             @size-change="handleSizeChange"
                             @current-change="handleCurrentChange"
-                            :current-page.sync="currentPage1"
+                            :current-page.sync="currentPage"
                             :page-size="100"
                             layout="total, prev, pager, next,jumper"
-                            :total="1000">
+                            :total="fundTableData.length">
                     </el-pagination>
 
             </div>
@@ -50,7 +50,7 @@
                     height="1000px"
                     size="medium"
                     ref="multipleTable"
-                    :data="fundTableData"
+                    :data="nowFundTableData"
                     tooltip-effect="dark"
 
                     @selection-change="handleSelectionChange">
@@ -74,7 +74,7 @@
                         show-overflow-tooltip>
                 </el-table-column>
                 <el-table-column
-                        prop="address"
+                        prop="valueNow"
                         label="最新净值"
                         show-overflow-tooltip>
                 </el-table-column>
@@ -87,11 +87,11 @@
                     </template>
                 </el-table-column>
                 <el-table-column
-                        prop="address"
+                        prop="peRatio"
                         label="买入费率"
                         show-overflow-tooltip>
                     <template slot-scope="scope">
-                        <span class="span_blue ">{{scope.row.address}}</span>
+                        <span class="span_blue ">{{scope.row.peRatio}}</span>
                     </template>
                 </el-table-column>
                 <el-table-column
@@ -120,23 +120,18 @@
                 msg: 'HelloWorld!',
                 selected_filters:[0,2,1],
                 dialogVisible:false,
-                currentPage1:1,
+                currentPage:1,
                 fundTableData:[],
                 filter_items:[{
                     title:'基金类型',
                     itemList:['股票型','债券型','货币型']
                 },{
                     title:'风险等级',
-                    itemList:['低','中低','中']
+                    itemList:['低','中','高']
                 },{
                     title:'基金公司',
                     itemList:['低','中低','中']
                 }],
-                test_tableList:[
-                    {
-
-                    }
-                ],
                 multipleSelection: []
             }
         },
@@ -145,6 +140,7 @@
                 console.log(data)
                 if(data.status===200){
                     this.fundTableData=data.data.data.data;
+
                 }else{
                     this.showMessage('获取失败','error')
                 }
@@ -152,6 +148,17 @@
                 console.log('err')
                 this.showMessage(`错误代码为${err}`,'error')
             })
+        },
+        computed:{
+           nowFundTableData:function(){
+               let {selected_filters,currentPage,fundTableData}=this;
+               let selected_filters_real=selected_filters.map((val,index)=>{
+                   return this.filter_items[index].itemList[val]
+               })
+               return fundTableData.filter((tableDataItem,index)=>{
+                   return (tableDataItem.riskType===selected_filters_real[1]&&(index>=currentPage*10-10)&&(index<currentPage*10))
+               })
+           }
         },
         methods:{
             getAllFund(pageNum,pageSize){
