@@ -16,6 +16,10 @@ import product_management from "../components/product_management/product_managem
 import generate_complete from "../components/product_management/generate_complete";
 import shares_libarary from "../components/product_management/shares_libarary";
 import transaction_details from "../components/transaction_details";
+import risk_adjustment from "../components/trading_box/risk_adjustment";
+import approval from "../components/trading_box/approval";
+import sell from "../components/trading_box/sell";
+import transaction_overview from "../components/trading_box/transaction_overview";
 Vue.use(Router)
 
 export default new Router({
@@ -100,6 +104,22 @@ export default new Router({
             path: '/transaction_details',
             name: 'transaction_details',
             component: transaction_details
+        },{
+            path: '/approval',
+            name: 'approval',
+            component: approval
+        },{
+            path: '/risk_adjustment',
+            name: 'risk_adjustment',
+            component: risk_adjustment
+        },{
+            path: '/transaction_overview',
+            name: 'transaction_overview',
+            component: transaction_overview
+        },{
+            path: '/sell',
+            name: 'sell',
+            component: sell
         }
     ],
     mode: 'hash'

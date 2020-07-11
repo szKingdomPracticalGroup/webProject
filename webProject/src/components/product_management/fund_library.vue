@@ -1,10 +1,11 @@
 <template>
     <div class="product_initialzation_fund">
         <el-dialog
-                :modal="false"
+                :modal="true"
                 title="基金产品确定"
                 :visible.sync="dialogVisible"
                 width="500px"
+
                 >
             <span>请确定您所选择的基金产品</span>
             <p>确定后将按您所选产品进行组合，并进入股票产品选择界面</p>
@@ -101,7 +102,7 @@
 
                     <template slot-scope="scope">
 
-                        <el-input v-model="scope.row.address"></el-input>
+                        <el-input v-model="scope.row.proportion"></el-input>
                     </template>
                 </el-table-column>
             </el-table>
@@ -121,6 +122,7 @@
                 selected_filters:[0,2,1],
                 dialogVisible:false,
                 currentPage:1,
+                initProduct:{},
                 fundTableData:[],
                 filter_items:[{
                     title:'基金类型',
@@ -161,10 +163,16 @@
            }
         },
         methods:{
+            initPro(){
+               axios.post('/product/')
+            },
             getAllFund(pageNum,pageSize){
                 axios.get(`/product/selectFundAlternateAll?pageNum=${pageNum}&pageSize=${pageSize}`).then(data=>{
                     if(data.code===200){
-                        this.fundTableData=data.data.data;
+                        this.fundTableData=data.data.data.map(item=>{
+                            item.proportion=0;
+                            return item
+                        });
                     }else{
                         this.showMessage('获取失败','error')
                     }
@@ -182,6 +190,7 @@
             },
             handleSelectionChange(val) {
                 this.multipleSelection = val;
+                console.log(this.multipleSelection)
             },
             handleSizeChange(){
 
@@ -192,10 +201,35 @@
             confirm_fund_initial(){
                 console.log('...')
                 this.dialogVisible=false;
-                this.$message({
-                    type:'success',
-                    message:'购买成功'
+                console.log(this.multipleSelection)
+                let fundList=this.multipleSelection.map(val=>({
+                    fundCode:val.code,
+                    productId:1,
+                    fundName:val.name,
+                    fundProportion:val.proportion
+                }))
+                axios.post('/product/initProduct',fundList).then(data=>{
+                    if(data.data){
+                        this.$message({
+                            type:'success',
+                            message:'购买成功'
+                        })
+                        setTimeout(()=>{
+
+                        },0)
+                    }else{
+                        this.$message({
+                            type:'warning',
+                            message:'购买失败'
+                        })
+                    }
+                }).catch((err)=>{
+                    this.$message({
+                        type:'warning',
+                        message:err
+                    })
                 })
+
                 // axios.post().then(data=>{
                 //
                 // }).catch(err=>{

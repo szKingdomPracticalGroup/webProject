@@ -18,7 +18,7 @@
                 <i class="el-icon-share"></i>
                 <span slot="title">平台简介</span>
             </el-menu-item>
-            <el-submenu >
+            <el-submenu index="2-5">
                 <template slot="title">
                     <i class="el-icon-user-solid"></i>
                     <span slot="title">投顾人中心</span>
@@ -39,12 +39,12 @@
                     <span>交易盒子</span>
                 </template>
                 <el-menu-item-group>
-                    <el-menu-item index="/">交易概览</el-menu-item>
-                    <el-menu-item index="5-1">审批</el-menu-item>
+                    <el-menu-item index="/transaction_overview">交易概览</el-menu-item>
+                    <el-menu-item index="/approval">审批</el-menu-item>
                     <el-menu-item index="/buy">买入</el-menu-item>
-                    <el-menu-item index="5-3">卖出</el-menu-item>
+                    <el-menu-item index="/sell">卖出</el-menu-item>
                     <el-menu-item index="/rebalance">再平衡</el-menu-item>
-                    <el-menu-item index="5-5">风险调仓</el-menu-item>
+                    <el-menu-item index="/risk_adjustment">风险调仓</el-menu-item>
                     <el-menu-item index="/transaction_details">交易明细</el-menu-item>
                 </el-menu-item-group>
             </el-submenu>

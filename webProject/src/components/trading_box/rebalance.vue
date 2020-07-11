@@ -5,12 +5,14 @@
 
         <div class="line"></div>
 
-        <div class="con1">
-            <div class="breadcrumb">产品管理/组合详情1</div>
-            <div class="ton1">
-                <el-button type="info">返回产品管理主页</el-button>
-            </div>
+        <div class="breadcrumb"><!-- 面包屑 -->
+        <el-breadcrumb separator="/">
+            <el-breadcrumb-item :to="{ path: '/first_page' }">系统首页</el-breadcrumb-item>
+            <el-breadcrumb-item :to="{ path: '/transaction_overview' }">交易概览</el-breadcrumb-item>
+            <el-breadcrumb-item :to="{ path: '/rebalance' }">再平衡</el-breadcrumb-item>
+        </el-breadcrumb>
         </div>
+        <div class="clean"></div>
 
         <div class="clean"></div>
         <div class="f3">
@@ -39,6 +41,32 @@
 
         </div>
 
+        <div class="f4">
+
+            <section class="chart-container1">
+                <el-row>
+                    <el-col :span="12">
+                        <div id="chartPie3" style="width:200%; height:400px;"></div>
+                    </el-col>
+                </el-row>
+            </section>
+
+            <section class="chart-container2">
+                <el-row>
+                    <el-col :span="12">
+                        <div id="chartPie4" style="width:200%; height:400px;"></div>
+                    </el-col>
+                </el-row>
+            </section>
+
+            <div class="clean"></div>
+
+            <div class="dbutcon">
+                <el-button type="danger" @click="openFullScreen2">product two 再平衡</el-button>
+            </div>
+
+        </div>
+
 
     </div>
 
@@ -55,9 +83,47 @@
             return {
                 chartPie1: null,
                 chartPie2: null,
-                fullscreenLoading: false
+                fullscreenLoading: false,
+                Com1_recommendation:{
+                    title_fundre:0.25,
+                    title_stockre:0.75,
+                    legend_recommendation:['基金1', '基金2', '基金3', '基金5', '基金6', '基金7', '基金8', '股票2', '股票4', '股票5', '股票6', '股票9'],
+                    series_recommendation:[
+                                {value: 5, name: '基金1'},
+                                {value: 3.75, name: '基金2'},
+                                {value: 3, name: '基金3'},
+                                {value: 3.5, name: '基金5'},
+                                {value: 3, name: '基金6'},
+                                {value: 3.75, name: '基金7'},
+                                {value: 3, name: '基金8'},
+                                {value: 24, name: '股票2'},
+                                {value: 28.5, name: '股票4'},
+                                {value: 9.75, name: '股票5'},
+                                {value: 9.75, name: '股票6'},
+                                {value: 3, name: '股票9'}
+                            ],
+                },
 
+                Com1_actual:{
+                    title_fundac:0.50,
+                    title_stockac:0.50,
 
+                    legend_actual:['基金1', '基金2', '基金3', '基金5', '基金6', '基金7', '基金8', '股票2', '股票4', '股票5', '股票6', '股票9'],
+                    series_actual:[
+                                {value: 9, name: '基金1'},
+                                {value: 6.75, name: '基金2'},
+                                {value: 5.4, name: '基金3'},
+                                {value: 6.3, name: '基金5'},
+                                {value: 5.4, name: '基金6'},
+                                {value: 6.75, name: '基金7'},
+                                {value: 5.4, name: '基金8'},
+                                {value: 17.6, name: '股票2'},
+                                {value: 20.9, name: '股票4'},
+                                {value: 7.15, name: '股票5'},
+                                {value: 7.15, name: '股票6'},
+                                {value: 2.2, name: '股票9'}
+                            ],
+                }
             };
         },
 
@@ -79,7 +145,7 @@
                 this.chartPie1.setOption({
                     title: {
                         text: 'Product One 组合推荐',
-                        subtext: '25%基金比例 + 75%股票比例',
+                        subtext: (this.Com1_recommendation.title_fundre)*100+'%基金比例+' + (this.Com1_recommendation.title_stockre)*100+'%股票比例',
                         x: 'center'
                     },
                     tooltip: {
@@ -89,7 +155,7 @@
                     legend: {
                         orient: 'vertical',
                         left: 'left',
-                        data: ['基金1', '基金2', '基金3', '基金5', '基金6', '基金7', '基金8', '股票2', '股票4', '股票5', '股票6', '股票9']
+                        data: this.Com1_recommendation.legend_recommendation
                     },
 
                     series: [
@@ -98,20 +164,7 @@
                             type: 'pie',
                             radius: '50%',
                             center: ['50%', '60%'],
-                            data: [
-                                {value: 5, name: '基金1'},
-                                {value: 3.75, name: '基金2'},
-                                {value: 3, name: '基金3'},
-                                {value: 3.5, name: '基金5'},
-                                {value: 3, name: '基金6'},
-                                {value: 3.75, name: '基金7'},
-                                {value: 3, name: '基金8'},
-                                {value: 24, name: '股票2'},
-                                {value: 28.5, name: '股票4'},
-                                {value: 9.75, name: '股票5'},
-                                {value: 9.75, name: '股票6'},
-                                {value: 3, name: '股票9'}
-                            ],
+                            data: this.Com1_recommendation.series_recommendation,
                             itemStyle: {
                                 emphasis: {
                                     shadowBlur: 10,
@@ -128,7 +181,7 @@
                 this.chartPie2.setOption({
                     title: {
                         text: '当前 Product One 实际配比',
-                        subtext: '45%基金比例 + 55%股票比例',
+                        subtext: (this.Com1_actual.title_fundac)*100+'%基金比例+' + (this.Com1_actual.title_stockac)*100+'%股票比例',
                         x: 'center'
                     },
                     tooltip: {
@@ -138,7 +191,7 @@
                     legend: {
                         orient: 'vertical',
                         left: 'left',
-                        data: ['基金1', '基金2', '基金3', '基金5', '基金6', '基金7', '基金8', '股票2', '股票4', '股票5', '股票6', '股票9']
+                        data: this.Com1_actual.legend_actual
                     },
 
                     series: [
@@ -147,20 +200,7 @@
                             type: 'pie',
                             radius: '50%',
                             center: ['50%', '60%'],
-                            data: [
-                                {value: 9, name: '基金1'},
-                                {value: 6.75, name: '基金2'},
-                                {value: 5.4, name: '基金3'},
-                                {value: 6.3, name: '基金5'},
-                                {value: 5.4, name: '基金6'},
-                                {value: 6.75, name: '基金7'},
-                                {value: 5.4, name: '基金8'},
-                                {value: 17.6, name: '股票2'},
-                                {value: 20.9, name: '股票4'},
-                                {value: 7.15, name: '股票5'},
-                                {value: 7.15, name: '股票6'},
-                                {value: 2.2, name: '股票9'}
-                            ],
+                            data: this.Com1_actual.series_actual,
                             itemStyle: {
                                 emphasis: {
                                     shadowBlur: 10,
@@ -172,6 +212,85 @@
                     ]
                 });
             },
+
+            drawPieChart3() {
+                this.chartPie3 = echarts.init(document.getElementById('chartPie3'));
+                this.chartPie3.setOption({
+                    title: {
+                        text: 'Product Two 组合推荐',
+                        subtext: (this.Com1_recommendation.title_fundre)*100+'%基金比例+' + (this.Com1_recommendation.title_stockre)*100+'%股票比例',
+                        x: 'center'
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    },
+                    legend: {
+                        orient: 'vertical',
+                        left: 'left',
+                        data: this.Com1_recommendation.legend_recommendation
+                    },
+
+                    series: [
+                        {
+                            name: '所占比例',
+                            type: 'pie',
+                            radius: '50%',
+                            center: ['50%', '60%'],
+                            data: this.Com1_recommendation.series_recommendation,
+                            itemStyle: {
+                                emphasis: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            }
+                        }
+                    ]
+                });
+            },
+
+            drawPieChart4() {
+                this.chartPie4 = echarts.init(document.getElementById('chartPie4'));
+                this.chartPie4.setOption({
+                    title: {
+                        text: '当前 Product Two 实际配比',
+                        subtext: (this.Com1_actual.title_fundac)*100+'%基金比例+' + (this.Com1_actual.title_stockac)*100+'%股票比例',
+                        x: 'center'
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    },
+                    legend: {
+                        orient: 'vertical',
+                        left: 'left',
+                        data: this.Com1_actual.legend_actual
+                    },
+
+                    series: [
+                        {
+                            name: '所占比例',
+                            type: 'pie',
+                            radius: '50%',
+                            center: ['50%', '60%'],
+                            data: this.Com1_actual.series_actual,
+                            itemStyle: {
+                                emphasis: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            }
+                        }
+                    ]
+                });
+            },
+
+
+
+
+
             drawCharts1() {
                 this.drawPieChart1()
             },
@@ -179,13 +298,21 @@
             drawCharts2() {
                 this.drawPieChart2()
             },
+            drawCharts3() {
+                this.drawPieChart3()
+            },
+            drawCharts4() {
+                this.drawPieChart4()
+            },
         },
 
 
         mounted: function () {
             this.drawCharts1();
-                this.drawCharts2();
-                this.openFullScreen2()
+            this.drawCharts2();
+            this.drawCharts3();
+            this.drawCharts4();
+                
 
         },
 
@@ -215,24 +342,9 @@
         border: 1.5px solid #FEEDA6;
     }
 
-    .breadcrumb {
-        position: relative;
-        color: gray;
-        font-weight: 700;
-        margin: 20px;
-        float: left;
-    }
-
-    .con1 {
-        width: 100%;
-
-    }
-
-    .ton1 {
-        float: right;
-        margin-right: 20px;
+    .breadcrumb{
         margin-top: 10px;
-
+        margin-bottom: 15px;
     }
 
 
@@ -268,5 +380,14 @@
         padding: 30px 20px;
     }
 
+.f4 {
+        width: 100%;
+        height: 440px;
+        align-content: center;
+        border: 1px solid blue;
+        box-shadow: 0 0 3px 3px cornflowerblue;
+        margin-top: 80px;
+
+    }
 
 </style>

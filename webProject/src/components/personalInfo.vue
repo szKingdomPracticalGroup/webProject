@@ -1,165 +1,162 @@
 <template>
+<div>
+  <el-breadcrumb separator="/">
+  <el-breadcrumb-item :to="{ path: '/myPage' }">投顾人中心</el-breadcrumb-item>
+  <el-breadcrumb-item>个人信息</el-breadcrumb-item>
+</el-breadcrumb>
   <div class="box">
-    <el-row class="first-line">
-      <el-col :span="6">
-        <div>
-          <el-upload
-            class="avatar-uploader"
-            :show-file-list="false"
-            :on-success="handleAvatarSuccess"
-            :before-upload="beforeAvatarUpload"
-          >
-            <el-tooltip class="item" effect="dark" content="更改头像" placement="top">
-              <el-avatar :size="100" icon="el-icon-user-solid" :src="avatarUrl"></el-avatar>
-            </el-tooltip>
-          </el-upload>
-        </div>
+    <div class="bgBlock"></div>
+    <div class="first-line">
+      <div class="avatarBox">
+        <el-upload
+          class="avatar-uploader"
+          action="/consultant/uploadAvatar"
+          :show-file-list="false"
+          :on-success="handleAvatarSuccess"
+          :before-upload="beforeAvatarUpload"
+        >
+          <el-tooltip class="item" effect="dark" content="更改头像" placement="top">
+            <el-avatar :src="avatarUrl" :size="150" shape="square"></el-avatar>
+          </el-tooltip>
+        </el-upload>
+      </div>
+      <div class="textInfo">
+        <p class="nameTxt">{{name}}</p>
+        <p class="emailTxt">{{email}}</p>
+      </div>
+    </div>
+
+    <el-divider content-position="left" id="divide">TA的权限</el-divider>
+    <div>
+      <el-row :gutter="20">
+      <el-col :span="3"  class="smallBox" v-for="(item,index) in sList" :key="index">
+        <i class="el-icon-star-on"></i>
+        {{item}}
       </el-col>
-      <el-col :span="6">
-        <div>
-          <p>{{name}}</p>
-          <p>{{email}}</p>
-        </div>
-      </el-col>
-      <el-col :span="6">
-        <p>{{department}}/{{position}}</p>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="12">
-        <el-select v-model="department" placeholder="请选择部门">
-          <el-option
-            v-for="item in options1"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-          ></el-option>
-        </el-select>
-      </el-col>
-      <el-col :span="12">
-        <el-select v-model="position" placeholder="请选择职位">
-          <el-option
-            v-for="item in options2"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-          ></el-option>
-        </el-select>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="8">
-        <div class="grid-content bg-purple"></div>
-      </el-col>
-      <el-col :span="8">
-        <div class="grid-content bg-purple-light"></div>
-      </el-col>
-      <el-col :span="8">
-        <div class="grid-content bg-purple"></div>
-      </el-col>
-    </el-row>
+      </el-row>
+    </div>
   </div>
+</div>
 </template>
 
 <script>
 export default {
   data() {
     return {
+      avatarSrc: "",
       avatarUrl: "",
-      name: "CB",
-      email: "123567@ww.com",
-      department: "",
-      position: "",
-      options1: [
-        {
-          value: "研发部",
-          label: "研发部"
-        },
-        {
-          value: "测试部",
-          label: "测试部"
-        },
-        {
-          value: "设计部",
-          label: "设计部"
-        },
-        {
-          value: "策划部",
-          label: "策划部"
-        }
-      ],
-      options2: [
-        {
-          value: "产品经理",
-          label: "产品经理"
-        },
-        {
-          value: "前端",
-          label: "前端"
-        },
-        {
-          value: "选项3",
-          label: "蚵仔煎"
-        },
-        {
-          value: "选项4",
-          label: "龙须面"
-        },
-        {
-          value: "选项5",
-          label: "北京烤鸭"
-        }
+      name: "",
+      email: "",
+      sList: [
+        "发票",
+        "报销",
+        "代理",
+        "买入",
+        "卖出",
+        "资产再平衡",
+        "调仓换股",
+        "提出建议",
+        "审批",
+        "公告"
       ]
     };
   },
   created() {
-    // this.getAvatar()
+    // this.getAvatar();
+    this.getInformation();
   },
   methods: {
-    methods: {
-      handleAvatarSuccess(res, file) {
-        this.imageUrl = URL.createObjectURL(file.raw);
-      },
-      beforeAvatarUpload(file) {
-        const isJPG = file.type === "image/jpeg";
-        const isLt2M = file.size / 1024 / 1024 < 2;
-
-        if (!isJPG) {
-          this.$message.error("上传头像图片只能是 JPG 格式!");
-        }
-        if (!isLt2M) {
-          this.$message.error("上传头像图片大小不能超过 2MB!");
-        }
-        return isJPG && isLt2M;
+    handleAvatarSuccess(res, file) {
+      this.imageUrl = URL.createObjectURL(file.raw);
+      console.log("success");
+    },
+    beforeAvatarUpload(file) {
+      const isJPG = file.type === "image/jpeg";
+      const isLt2M = file.size / 1024 / 1024 < 2;
+      console.log("done");
+      if (!isJPG) {
+        this.$message.error("上传头像图片只能是 JPG 格式!");
       }
+      if (!isLt2M) {
+        this.$message.error("上传头像图片大小不能超过 2MB!");
+      }
+      return isJPG && isLt2M;
+    },
 
-      //  getAvatar() {
-      //    this.axios
-      //     .get("http://123.57.46.173:9002/consultant/consultantAvatar/{fileName}")
-      //     .then(res => {
-
-      //     });
-      //  }
+    getInformation() {
+      this.$axios.get("/consultant/loadConsultant").then(res => {
+        this.avatarUrl = res.data.data.avatar;
+        this.name = res.data.data.name;
+        this.email = res.data.data.email;
+      });
     }
+
+    //   getAvatar() {
+    //     let avatar = this.avatarUrl;
+    //     this.$axios
+    //       .get('/consultant/consultantAvatar/64d1b06b326f44909a8f9ae34921c4f6.jpg')
+    //       .then(res => {
+    //         this.avatarSrc=res.data;
+    //         if(res.data.code===200){
+    //           console.log(123)
+    //         }
+
+    //       });
+    //   }
   }
 };
 </script>
 
 <style scoped>
 .box {
-  height: 400px;
-  width: 1000px;
-  margin: 80px auto;
-  padding: 50px;
+  height: 500px;
+  width: 1200px;
+  margin: 50px auto;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  background: white;
+  position: relative;
+}
+.bgBlock {
+  position: absolute;
+  width: 100%;
+  height: 120px;
+  background-color: skyblue;
+  z-index: 1;
 }
 .first-line {
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
+  top: 40px;
+  left: 40px;
+  position: relative;
+  z-index: 2;
+}
+.avatarBox {
+  width: 150px;
+  height: 150px;
+  border: 3px solid white;
 }
 .el-avatar:hover {
   background-color: #0e0d0d;
-  opacity: 0.5;
+}
+.textInfo {
+  margin-left: 10px;
+}
+.nameTxt {
+  color: white;
+  font-size: 30px;
+}
+.emailTxt {
+  color: skyblue;
+}
+#divide {
+  margin-top: 100px;
+}
+.smallBox{
+  margin: 8px 30px;
+  color: #686868;
+}
+.smallBox:hover{
+  color: aqua;
 }
 </style>
